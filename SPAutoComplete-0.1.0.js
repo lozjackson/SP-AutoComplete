@@ -2,7 +2,7 @@
 * SPAutoComplete v0.1.0
 *
 * Modified by: Loz Jackson
-* Last Modified: 2015-01-23 09:14
+* Last Modified: 2015-01-23 13:09
 *
 * Dependencies: 
 * jquery-2.1.1.min.js (may work with other versions of jquery, but not tested)
@@ -22,12 +22,12 @@
 	<script>
 		$(document).ready(function () {
 			new AutoComplete({
-				ListSite: "Source List Site Name", 												// default: "StudentServices"
-				ListName: "Source List Name",		
-				FieldName: "Source Field Name",													// default: "Name"
-				AdditionalField: "Additional Source Field Name",
-				ACFormField: "The name of the form field to turn into an autocomplete field",	// default: "Name"
-				AdditionalFormField: "The form field to hold the additional info",
+				ListSite: "Source List Site Name", 												// Required
+				ListName: "Source List Name",													// Required
+				FieldName: "Source Field Name",													// Required (Default: "Name")
+				ACFormField: "The name of the form field to turn into an autocomplete field",	// Required (Default: "Name")
+				AdditionalField: "Additional Source Field Name",								// Optional
+				AdditionalFormField: "The form field to hold the additional info",				// Optional
 			});
 		});
 	</script>
@@ -102,19 +102,25 @@
 			@param (String) HostName
 				This is the server hostname.. ie. sharepoint.stantonbury.org.uk
 		*/
-		this.HostName 				= w.location.hostname || 'sharepoint.stantonbury.org.uk';
+		this.HostName 				= w.location.hostname;
 		
 		/*
 			@param (String) ACListSite
 				This is site the list is hosted on
 		*/
-		this.ListSite				= "StudentServices";
+		this.ListSite				= null;
+		
+		/*
+			@param (String) Http
+				Specifiy 'http' or 'https'.  Default: 'http'
+		*/
+		this.Http = 'http';
 		
 		/*
 			@param (String) WebURL
 				This is the site that hosts the list specified by ACListName
 		*/
-		this.WebURL					= "http://" + this.HostName + '/' + this.ListSite;
+		this.WebURL					= this.Http + "://" + this.HostName + '/' + this.ListSite;
 		
 		/*
 			@param (Function) ListItemProcess
@@ -295,12 +301,17 @@
 			that.ACFormField = $("input[title='" + that.ACFormField + "']");
 			SaveButton 	= $('input[value="Save"]');
 			
+			var viewFields = "<ViewFields><FieldRef Name='" + FieldName + "' />";
+			if (that.AdditionalField) viewFields += "<FieldRef Name='" + that.AdditionalField + "' />";
+			viewFields += "</ViewFields>";
+			
+			
 			// Make SPServices.GetListItems function call
 			$().SPServices({
 				operation: "GetListItems",
 				webURL: that.WebURL,
 				listName: that.ListName,
-				CAMLViewFields: "<ViewFields><FieldRef Name='Name' /><FieldRef Name='TutorGrp' /></ViewFields>",
+				CAMLViewFields: viewFields,
 				async: false,
 				completefunc: function (xData, Status) {
 					$(xData.responseXML).SPFilterNode("z:row").each(function() {
