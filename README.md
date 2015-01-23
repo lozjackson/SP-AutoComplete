@@ -14,24 +14,25 @@ Dependencies:
 
 Instructions for creating an autocomplete field
 	
-1. Include this file.
-2. Use the following piece of script to add an autocomplete field.  
-	This should be called once the page has finished loading.. ie. place it in jquery's document ready function.
+Use the following piece of script to add an autocomplete field.  This should be called once the page has finished loading.. 
+
+ie. place it in jquery's document ready function.
 	
 	Example:
 	 
-	<script>
-		$(document).ready(function () {
-			new AutoComplete({
-				ListSite: "Source List Site Name", 												// Required
-				ListName: "Source List Name",													// Required
-				FieldName: "Source Field Name",													// Required (Default: "Name")
-				ACFormField: "The name of the form field to turn into an autocomplete field",	// Required (Default: "Name")
-				AdditionalField: "Additional Source Field Name",								// Optional
-				AdditionalFormField: "The form field to hold the additional info",				// Optional
-			});
+	$(document).ready(function () {
+		
+		new AutoComplete({
+			ListSite: "Source List Site Name", 												// Required
+			ListName: "Source List Name",													// Required
+			FieldName: "Source Field Name",													// Required (Default: "Name")
+			ACFormField: "The name of the form field to turn into an autocomplete field",	// Required (Default: "Name")
+			AdditionalField: "Additional Source Field Name",								// Optional
+			AdditionalFormField: "The form field to hold the additional info",				// Optional
 		});
-	</script>
+	
+	});
+
 
 # Options
 
