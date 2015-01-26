@@ -79,7 +79,7 @@ Defaults:
 		Default: window.location.hostname
 	
 	@param (String) WebURL
-		This is the site that hosts the list specified by ACListName.
+		This is the site that hosts the list specified by ListName.
 		Default: Http + "://" + HostName + '/' + ListSite;
 
 
