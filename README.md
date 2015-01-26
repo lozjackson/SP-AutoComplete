@@ -1,8 +1,12 @@
-# SPAutoComplete
+# SP-AutoComplete
 
 v0.1.0
 
-This AutoComplete tool is for use with SharePoint 2010 forms.  It requires jquery, jquery-UI and jquery-SPServices libraries.
+This AutoComplete tool is for use with SharePoint 2010 forms.  It uses jquery.SPServices to get list items from SharePoint.
+And then uses the jquery-UI AutoComplete widget to create an auto complete input field using the SharePoint list as source.
+
+There is also an option to get an additional field from the source list and use that data to populate an additional field
+on the SharePoint form.
 
 Dependencies: 
 * jquery-2.1.1.min.js (may work with other versions of jquery, but not tested)
@@ -10,9 +14,9 @@ Dependencies:
 * jquery-ui.min.css
 * jquery.SPServices-2014.01.min.js (may work with other versions of jquery.SPServices, but not tested)
 
-# Instructions
+# Use
 
-Instructions for creating an autocomplete field
+Instructions for creating an autocomplete input field
 	
 Use the following piece of script to add an autocomplete field.  This should be called once the page has finished loading.. 
 
