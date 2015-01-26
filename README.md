@@ -1,6 +1,6 @@
 # SP-AutoComplete
 
-v0.1.0
+v0.1.1
 
 This AutoComplete tool is for use with SharePoint 2010 forms.  It uses jquery.SPServices to get list items from SharePoint
 and then uses the jquery-UI AutoComplete widget to create an auto complete input field using the SharePoint list as source.
@@ -27,10 +27,10 @@ ie. place it in jquery's document ready function.
 	$(document).ready(function () {
 		
 		new AutoComplete({
-			ListSite: "Source List Site Name", 												// Required
 			ListName: "Source List Name",													// Required
 			FieldName: "Source Field Name",													// Required (Default: "Name")
 			ACFormField: "The name of the form field to turn into an autocomplete field",	// Required (Default: "Name")
+			ListSite: "Source List Site Name", 												// Optional
 			AdditionalField: "Additional Source Field Name",								// Optional
 			AdditionalFormField: "The form field to hold the additional info",				// Optional
 		});
@@ -41,10 +41,6 @@ ie. place it in jquery's document ready function.
 # Options
 
 Required:
-
-	@param (String) ListSite
-		This is the site the list is hosted on.
-		Required
 
 	@param (String) ListName
 		This is the list where the auto-complete data is stored.
@@ -84,6 +80,11 @@ Defaults:
 
 Optional:
 
+	@param (String) ListSite
+		This is the site the list is hosted on.  If not specified then the current SharePoint site will be used.
+		This option only needs to be specified when the source list is on a different site/sub-site.
+		Optional.
+		
 	@param (Function) ListItemProcess
 		If a function is stored in this variable, then it will be applied to each list item before adding the item to the ACList Array.
 		Optional

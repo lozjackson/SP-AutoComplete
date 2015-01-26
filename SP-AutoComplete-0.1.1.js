@@ -1,8 +1,8 @@
 /********************************************************************************************************************
-* SP-AutoComplete v0.1.0
+* SP-AutoComplete v0.1.1
 *
 * Modified by: Loz Jackson
-* Last Modified: 2015-01-23 13:09
+* Last Modified: 2015-01-26 15:27
 *
 * Dependencies: 
 * jquery-2.1.1.min.js (may work with other versions of jquery, but not tested)
@@ -22,10 +22,10 @@
 	<script>
 		$(document).ready(function () {
 			new AutoComplete({
-				ListSite: "Source List Site Name", 												// Required
 				ListName: "Source List Name",													// Required
 				FieldName: "Source Field Name",													// Required (Default: "Name")
 				ACFormField: "The name of the form field to turn into an autocomplete field",	// Required (Default: "Name")
+				ListSite: "Source List Site Name", 												// Optional
 				AdditionalField: "Additional Source Field Name",								// Optional
 				AdditionalFormField: "The form field to hold the additional info",				// Optional
 			});
@@ -71,7 +71,7 @@
 		this.FieldName 				= "Name";
 		
 		/*
-			@param (String) ACAdditionalField
+			@param (String) AdditionalField
 				This is an optional second field in the ACListName list that data is retrieved from. This data will be placed in brackets after the ACFieldName value in the auto-complete list.
 				ie. Student Name (Tutor Group), where 'Student Name' is the value from ACFieldName, and 'Tutor Group' is the value from ACAdditionalField
 				If this var is left blank, then no additional data will be retrieved.
@@ -79,7 +79,7 @@
 		this.AdditionalField 		= null;
 		
 		/*
-			@param (Number) ACMinLength
+			@param (Number) MinLength
 				This is the minimum number characters that needs to be typed before the auto-complete drop down list appears
 		*/
 		this.MinLength 				= 1;
@@ -93,7 +93,7 @@
 		//this.CheckFields = [this];
 		
 		/*
-			@param (String) ACAdditionalFormField
+			@param (String) AdditionalFormField
 				This is the field that the additional info will be placed into after the auto-complete field loses focus
 		*/
 		this.AdditionalFormField 	= null;
@@ -105,8 +105,10 @@
 		this.HostName 				= w.location.hostname;
 		
 		/*
-			@param (String) ACListSite
-				This is site the list is hosted on
+			@param (String) ListSite
+				This is the site the list is hosted on.  If not specified then the current SharePoint site will be used.
+				This option only needs to be specified when the source list is on a different site/sub-site.
+				Optional.
 		*/
 		this.ListSite				= null;
 		
@@ -114,13 +116,13 @@
 			@param (String) Http
 				Specifiy 'http' or 'https'.  Default: 'http'
 		*/
-		this.Http = 'http';
+		this.Http 					= 'http';
 		
 		/*
 			@param (String) WebURL
 				This is the site that hosts the list specified by ACListName
 		*/
-		this.WebURL					= this.Http + "://" + this.HostName + '/' + this.ListSite;
+		this.WebURL					= null
 		
 		/*
 			@param (Function) ListItemProcess
@@ -296,18 +298,17 @@
 		function setupAutoCompleteField() 
 		{
 		
+			var viewFields, params;
 			that.ACList = [];
 			
 			that.ACFormField = $("input[title='" + that.ACFormField + "']");
 			SaveButton 	= $('input[value="Save"]');
 			
-			var viewFields = "<ViewFields><FieldRef Name='" + FieldName + "' />";
+			viewFields = "<ViewFields><FieldRef Name='" + that.FieldName + "' />";
 			if (that.AdditionalField) viewFields += "<FieldRef Name='" + that.AdditionalField + "' />";
 			viewFields += "</ViewFields>";
 			
-			
-			// Make SPServices.GetListItems function call
-			$().SPServices({
+			params = {
 				operation: "GetListItems",
 				webURL: that.WebURL,
 				listName: that.ListName,
@@ -327,7 +328,13 @@
 						that.ACList.push(value);
 					});
 				}
-			});
+			};
+			
+			// set the webURL
+			if (that.WebURL) params.webURL = that.WebURL;
+			
+			// Make SPServices.GetListItems function call
+			$().SPServices(params);
 			
 			// create the auto-complete text field
 			that.ACFormField.autocomplete({
@@ -348,6 +355,9 @@
 			var obj = arguments[0];
 			for (var i in obj) this[i] = obj[i];
 		}
+		
+		// set the webURL
+		if (this.ListSite) this.WebURL	= this.Http + "://" + this.HostName + '/' + this.ListSite;
 		
 		// setup the auto complete field
 		if (this.ListName && this.ACFormField) setupAutoCompleteField();
