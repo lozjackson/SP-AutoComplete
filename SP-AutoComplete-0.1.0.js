@@ -22,10 +22,10 @@
 	<script>
 		$(document).ready(function () {
 			new AutoComplete({
-				ListSite: "Source List Site Name", 												// Required
 				ListName: "Source List Name",													// Required
 				FieldName: "Source Field Name",													// Required (Default: "Name")
 				ACFormField: "The name of the form field to turn into an autocomplete field",	// Required (Default: "Name")
+				ListSite: "Source List Site Name", 												// Optional
 				AdditionalField: "Additional Source Field Name",								// Optional
 				AdditionalFormField: "The form field to hold the additional info",				// Optional
 			});
@@ -106,7 +106,9 @@
 		
 		/*
 			@param (String) ACListSite
-				This is site the list is hosted on
+				This is the site the list is hosted on.  If not specified then the current SharePoint site will be used.
+				This option only needs to be specified when the source list is on a different site/sub-site.
+				Optional.
 		*/
 		this.ListSite				= null;
 		
@@ -296,21 +298,19 @@
 		function setupAutoCompleteField() 
 		{
 		
+			var viewFields, params;
 			that.ACList = [];
 			
 			that.ACFormField = $("input[title='" + that.ACFormField + "']");
 			SaveButton 	= $('input[value="Save"]');
 			
-			var viewFields = "<ViewFields><FieldRef Name='" + FieldName + "' />";
+			viewFields = "<ViewFields><FieldRef Name='" + FieldName + "' />";
 			if (that.AdditionalField) viewFields += "<FieldRef Name='" + that.AdditionalField + "' />";
 			viewFields += "</ViewFields>";
 			
-			
-			// Make SPServices.GetListItems function call
-			$().SPServices({
+			params = {
 				operation: "GetListItems",
 				webURL: that.WebURL,
-				listName: that.ListName,
 				CAMLViewFields: viewFields,
 				async: false,
 				completefunc: function (xData, Status) {
@@ -327,7 +327,12 @@
 						that.ACList.push(value);
 					});
 				}
-			});
+			};
+			
+			if (that.ListName) params.listName = that.ListName;
+			
+			// Make SPServices.GetListItems function call
+			$().SPServices(params);
 			
 			// create the auto-complete text field
 			that.ACFormField.autocomplete({
