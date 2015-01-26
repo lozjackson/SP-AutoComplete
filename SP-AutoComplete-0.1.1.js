@@ -71,7 +71,7 @@
 		this.FieldName 				= "Name";
 		
 		/*
-			@param (String) ACAdditionalField
+			@param (String) AdditionalField
 				This is an optional second field in the ACListName list that data is retrieved from. This data will be placed in brackets after the ACFieldName value in the auto-complete list.
 				ie. Student Name (Tutor Group), where 'Student Name' is the value from ACFieldName, and 'Tutor Group' is the value from ACAdditionalField
 				If this var is left blank, then no additional data will be retrieved.
@@ -79,7 +79,7 @@
 		this.AdditionalField 		= null;
 		
 		/*
-			@param (Number) ACMinLength
+			@param (Number) MinLength
 				This is the minimum number characters that needs to be typed before the auto-complete drop down list appears
 		*/
 		this.MinLength 				= 1;
@@ -93,7 +93,7 @@
 		//this.CheckFields = [this];
 		
 		/*
-			@param (String) ACAdditionalFormField
+			@param (String) AdditionalFormField
 				This is the field that the additional info will be placed into after the auto-complete field loses focus
 		*/
 		this.AdditionalFormField 	= null;
@@ -105,7 +105,7 @@
 		this.HostName 				= w.location.hostname;
 		
 		/*
-			@param (String) ACListSite
+			@param (String) ListSite
 				This is the site the list is hosted on.  If not specified then the current SharePoint site will be used.
 				This option only needs to be specified when the source list is on a different site/sub-site.
 				Optional.

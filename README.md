@@ -64,11 +64,6 @@ Defaults:
 	@param (Boolean) DisableSaveButton
 		If true, then the save button will be disabled when the name field is invalid.
 		Default: true
-	
-	@param (String) ListSite
-		This is the site the list is hosted on.  If not specified then the current SharePoint site will be used.
-		This option only needs to be specified when the source list is on a different site/sub-site.
-		Optional.
 		
 	@param (String) Http
 		Specifiy 'http' or 'https'.  
@@ -85,6 +80,11 @@ Defaults:
 
 Optional:
 
+	@param (String) ListSite
+		This is the site the list is hosted on.  If not specified then the current SharePoint site will be used.
+		This option only needs to be specified when the source list is on a different site/sub-site.
+		Optional.
+		
 	@param (Function) ListItemProcess
 		If a function is stored in this variable, then it will be applied to each list item before adding the item to the ACList Array.
 		Optional
