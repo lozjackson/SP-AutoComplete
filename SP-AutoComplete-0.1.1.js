@@ -116,13 +116,13 @@
 			@param (String) Http
 				Specifiy 'http' or 'https'.  Default: 'http'
 		*/
-		this.Http = 'http';
+		this.Http 					= 'http';
 		
 		/*
 			@param (String) WebURL
 				This is the site that hosts the list specified by ACListName
 		*/
-		this.WebURL					= this.Http + "://" + this.HostName + '/' + this.ListSite;
+		this.WebURL					= null
 		
 		/*
 			@param (Function) ListItemProcess
@@ -329,7 +329,8 @@
 				}
 			};
 			
-			if (that.ListName) params.listName = that.ListName;
+			// set the webURL
+			if (that.WebURL) params.webURL = that.WebURL;
 			
 			// Make SPServices.GetListItems function call
 			$().SPServices(params);
@@ -353,6 +354,9 @@
 			var obj = arguments[0];
 			for (var i in obj) this[i] = obj[i];
 		}
+		
+		// set the webURL
+		if (this.ListSite) this.WebURL	= this.Http + "://" + this.HostName + '/' + this.ListSite;
 		
 		// setup the auto complete field
 		if (this.ListName && this.ACFormField) setupAutoCompleteField();
