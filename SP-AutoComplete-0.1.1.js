@@ -304,7 +304,7 @@
 			that.ACFormField = $("input[title='" + that.ACFormField + "']");
 			SaveButton 	= $('input[value="Save"]');
 			
-			viewFields = "<ViewFields><FieldRef Name='" + FieldName + "' />";
+			viewFields = "<ViewFields><FieldRef Name='" + that.FieldName + "' />";
 			if (that.AdditionalField) viewFields += "<FieldRef Name='" + that.AdditionalField + "' />";
 			viewFields += "</ViewFields>";
 			
