@@ -18,9 +18,11 @@ Dependencies:
 
 Use the following piece of script (see example below) to add an auto-complete field to a SharePoint 2010 form.  This should be called once the page has finished loading..  ie. place it in jquery's document ready function.
 
-1. Set `ListName` to the name of the list where the auto-complete source data is stored.  
-2. Set `FieldName` to the name of the column to use from that list.  
-3. Set the `ACFormField` parameter to the title of your input element that you want to transform into an auto-complete field.
+1. Set `ListName` to the name of the list where the auto-complete source data is stored.  This is the only required parameter.
+
+2. Set `FieldName` to the name of the column to use from that list.  This parameter is optional and will default to 'Name' if not specified.
+
+3. Set the `ACFormField` parameter to the title of your input element that you want to transform into an auto-complete field.  This parameter is optional and will default to 'Name' if not specified.
 
 You can also specify an additional column to be fetched from the source list by setting `AdditionalField` to the name of the additional column to be fetched.
 This data will be set in brackets and appended to the first field.  ie. "Name (Comment)" - where Name is the data value from `FieldName`, and Comment is the value from `AdditionalField`.
