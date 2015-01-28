@@ -35,12 +35,12 @@ If you set `AdditionalFormField` to another input element in your form, then it'
 	$(document).ready(function () {
 		
 		new AutoComplete({
-			ListName: "Source List Name",													// Required
-			FieldName: "Source Field Name",													// Required (Default: "Name")
-			ACFormField: "The name of the auto-complete input element on your form",		// Required (Default: "Name")
+			ListName: "Source List Name",												// Required
+			FieldName: "Source Field Name",												// Default: "Name"
+			ACFormField: "The name of the auto-complete input element on your form",	// Default: "Name"
 			
-			AdditionalField: "Additional Source Field Name",								// Optional
-			AdditionalFormField: "The form field to hold the additional info",				// Optional
+			AdditionalField: "Additional Source Field Name",							// Optional
+			AdditionalFormField: "The form field to hold the additional info",			// Optional
 		});
 	
 	});
@@ -91,16 +91,16 @@ Optional
 
 * `ListSite` (String)  
 This is the site the list is hosted on.  If not specified then the current SharePoint site will be used.  This option only needs to be specified when the source list is on a different site/sub-site.  
-Optional Default: Current SharePoint site.
+Optional.  Default: Current SharePoint site.
 
 * `Http` (String)  
-Specifiy 'http' or 'https'.
-Default: http
+Specifiy 'http' or 'https'.  
+Optional.  Default: http
 
 * `HostName` (String)  
 This is the server hostname.. ie. www.example.com  
-Default: window.location.hostname
+Optional.  Default: window.location.hostname
 
 * `WebURL` (String)  
 This is the site that hosts the list specified by `ListName`.  
-Default: `Http + "://" + HostName + '/' + ListSite;`
+Optional.  Default: `Http + "://" + HostName + '/' + ListSite;`
