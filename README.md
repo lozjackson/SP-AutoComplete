@@ -8,11 +8,13 @@ and then uses the jquery-UI AutoComplete widget to create an auto complete input
 There is also an option to get an additional field from the source list and use that data to populate an additional field
 on the SharePoint form.
 
-Dependencies: 
-* jquery-2.1.1.min.js (may work with other versions of jquery, but not tested)
-* jquery-ui.min.js
-* jquery-ui.min.css
-* jquery.SPServices-2014.01.min.js (may work with other versions of jquery.SPServices, but not tested)
+
+# Dependencies: 
+
+* jQuery
+* jQuery-UI
+* jQuery.SPServices
+
 
 # Use
 
@@ -29,6 +31,7 @@ This data will be set in brackets and appended to the first field.  ie. "Name (C
 
 If you set `AdditionalFormField` to another input element in your form, then it's value will be set to the value of `AdditionalField`.
 
+
 # Example
 	 
 	$(document).ready(function () {
@@ -43,6 +46,7 @@ If you set `AdditionalFormField` to another input element in your form, then it'
 		});
 	
 	});
+
 
 
 # Options
@@ -71,25 +75,9 @@ Default: 1
 * `DisableSaveButton` (Boolean)  
 If true, then the save button will be disabled when the name field is invalid.  
 Default: true
-	
-* `Http` (String)  
-Specifiy 'http' or 'https'.  
-Default: http
-
-* `HostName` (String)  
-This is the server hostname.. ie. www.example.com  
-Default: window.location.hostname
-
-* `WebURL` (String)  
-This is the site that hosts the list specified by `ListName`.  
-Default: `Http + "://" + HostName + '/' + ListSite;`
 
 
 Optional:
-
-* `ListSite` (String)  
-This is the site the list is hosted on.  If not specified then the current SharePoint site will be used.  This option only needs to be specified when the source list is on a different site/sub-site.  
-Optional.
 	
 * `ListItemProcess` (Function)  
 If a function is stored in this variable, then it will be applied to each list item before adding the item to the `ACList` Array.  
@@ -102,3 +90,19 @@ Optional
 * `AdditionalFormField` (String)  
 This is the field that the additional info will be placed into after the auto-complete field loses focus.  
 Optional
+
+* `ListSite` (String)  
+This is the site the list is hosted on.  If not specified then the current SharePoint site will be used.  This option only needs to be specified when the source list is on a different site/sub-site.  
+Optional Default: Current SharePoint site.
+
+* `Http` (String)  
+Specifiy 'http' or 'https'.
+Default: http
+
+* `HostName` (String)  
+This is the server hostname.. ie. www.example.com  
+Default: window.location.hostname
+
+* `WebURL` (String)  
+This is the site that hosts the list specified by `ListName`.  
+Default: `Http + "://" + HostName + '/' + ListSite;`
