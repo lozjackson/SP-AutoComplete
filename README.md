@@ -47,11 +47,9 @@ If you set `AdditionalFormField` to another input element in your form, then it'
 
 Required:
 
-* `ListName` (String)
-
-	This is the list where the auto-complete data is stored.
-
-	Required
+* `ListName` (String)  
+This is the list where the auto-complete data is stored.  
+Required
 
 
 Defaults:
