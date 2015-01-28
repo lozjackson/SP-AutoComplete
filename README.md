@@ -18,7 +18,7 @@ on the SharePoint form.
 
 # Use
 
-Use the following piece of script (see example below) to add an auto-complete field to a SharePoint 2010 form.  This should be called once the page has finished loading..  ie. place it in jquery's document ready function.
+Use the following script (see example below) to add an auto-complete field to a SharePoint 2010 form.  This should be called once the page has finished loading..  ie. place it in jquery's document ready function.
 
 1. Set `ListName` to the name of the list where the auto-complete source data is stored.  This is the only required parameter.
 
