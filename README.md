@@ -16,7 +16,7 @@ Dependencies:
 
 # Use
 
-Use the following piece of script to add an auto-complete field to a SharePoint 2010 form.  This should be called once the page has finished loading..  ie. place it in jquery's document ready function.
+Use the following piece of script (see example below) to add an auto-complete field to a SharePoint 2010 form.  This should be called once the page has finished loading..  ie. place it in jquery's document ready function.
 
 1. Set `ListName` to the name of the list where the auto-complete source data is stored.  
 2. Set `FieldName` to the name of the column to use from that list.  
@@ -27,7 +27,7 @@ This data will be set in brackets and appended to the first field.  ie. "Name (C
 
 If you set `AdditionalFormField` to another input element in your form, then it's value will be set to the value of `AdditionalField`.
 
-	Example:
+# Example
 	 
 	$(document).ready(function () {
 		
@@ -47,60 +47,60 @@ If you set `AdditionalFormField` to another input element in your form, then it'
 
 Required:
 
-	@param (String) ListName
-		This is the list where the auto-complete data is stored.
-		Required
+@param (String) `ListName`
+This is the list where the auto-complete data is stored.
+Required
 
 
 Defaults:
-		
-	@param (String) FieldName
-		This is the field in the `ListName` list that the data is compiled from.
-		Default: Name
-		
-	@param (String) ACFormField
-		The 'ACFormField' is the textbox field that we want to turn into an auto-complete textbox field using Jquery-UI's auto-complete widget.
-		Default: Name
-			
-	@param (Number) MinLength
-		This is the minimum number of characters that needs to be typed before the auto-complete drop down list appears.
-		Default: 1
 	
-	@param (Boolean) DisableSaveButton
-		If true, then the save button will be disabled when the name field is invalid.
-		Default: true
-		
-	@param (String) Http
-		Specifiy 'http' or 'https'.  
-		Default: http
+@param (String) `FieldName`
+This is the field in the `ListName` list that the data is compiled from.
+Default: Name
 	
-	@param (String) HostName
-		This is the server hostname.. ie. www.example.com
-		Default: window.location.hostname
+@param (String) `ACFormField`
+The `ACFormField` is the textbox field that we want to turn into an auto-complete textbox field using Jquery-UI's auto-complete widget.
+Default: Name
 	
-	@param (String) WebURL
-		This is the site that hosts the list specified by ListName.
-		Default: Http + "://" + HostName + '/' + ListSite;
+@param (Number) `MinLength`
+This is the minimum number of characters that needs to be typed before the auto-complete drop down list appears.
+Default: 1
+	
+@param (Boolean) `DisableSaveButton`
+If true, then the save button will be disabled when the name field is invalid.
+Default: true
+	
+@param (String) `Http`
+Specifiy 'http' or 'https'.  
+Default: http
+
+@param (String) `HostName`
+This is the server hostname.. ie. www.example.com
+Default: window.location.hostname
+
+@param (String) `WebURL`
+This is the site that hosts the list specified by `ListName`.
+Default: `Http + "://" + HostName + '/' + ListSite`;
 
 
 Optional:
 
-	@param (String) ListSite
-		This is the site the list is hosted on.  If not specified then the current SharePoint site will be used.
-		This option only needs to be specified when the source list is on a different site/sub-site.
-		Optional.
-		
-	@param (Function) ListItemProcess
-		If a function is stored in this variable, then it will be applied to each list item before adding the item to the ACList Array.
-		Optional
+@param (String) `ListSite`
+This is the site the list is hosted on.  If not specified then the current SharePoint site will be used.
+This option only needs to be specified when the source list is on a different site/sub-site.
+Optional.
 	
-	@param (String) AdditionalField
-		This is an optional second field in the ListName list that data is retrieved from. 
-		This data will be placed in brackets after the ACFieldName value in the auto-complete list.
-		ie. Name (Additional Info), where 'Name' is the value from ACFieldName, and 'Additional Info' is the value from AdditionalField.
-		If this var is left blank, then no additional data will be retrieved.
-		Optional
+@param (Function) `ListItemProcess`
+If a function is stored in this variable, then it will be applied to each list item before adding the item to the `ACList` Array.
+Optional
+
+@param (String) `AdditionalField`
+This is an optional second field in the `ListName` list that data is retrieved from. 
+This data will be placed in brackets after the `ACFieldName` value in the auto-complete list.
+ie. "Name (Additional Info)", where 'Name' is the value from `ACFieldName`, and 'Additional Info' is the value from `AdditionalField`.
+If this var is left blank, then no additional data will be retrieved.
+Optional
 	
-	@param (String) AdditionalFormField
-		This is the field that the additional info will be placed into after the auto-complete field loses focus.
-		Optional
+@param (String) `AdditionalFormField`
+This is the field that the additional info will be placed into after the auto-complete field loses focus.
+Optional
