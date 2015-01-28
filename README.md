@@ -54,53 +54,49 @@ Required
 
 Defaults:
 	
-@param (String) `FieldName`  
+* `FieldName` (String)  
 This is the field in the `ListName` list that the data is compiled from.  
 Default: Name
 	
-@param (String) `ACFormField`
-The `ACFormField` is the textbox field that we want to turn into an auto-complete textbox field using Jquery-UI's auto-complete widget.
+* `ACFormField` (String)  
+The `ACFormField` is the textbox field that we want to turn into an auto-complete textbox field using Jquery-UI's auto-complete widget.  
 Default: Name
 	
-@param (Number) `MinLength`
-This is the minimum number of characters that needs to be typed before the auto-complete drop down list appears.
+* `MinLength` (Number)  
+This is the minimum number of characters that needs to be typed before the auto-complete drop down list appears.  
 Default: 1
 	
-@param (Boolean) `DisableSaveButton`
-If true, then the save button will be disabled when the name field is invalid.
+* `DisableSaveButton` (Boolean)  
+If true, then the save button will be disabled when the name field is invalid.  
 Default: true
 	
-@param (String) `Http`
+* `Http` (String)  
 Specifiy 'http' or 'https'.  
 Default: http
 
-@param (String) `HostName`
-This is the server hostname.. ie. www.example.com
+* `HostName` (String)  
+This is the server hostname.. ie. www.example.com  
 Default: window.location.hostname
 
-@param (String) `WebURL`
-This is the site that hosts the list specified by `ListName`.
+* `WebURL` (String)  
+This is the site that hosts the list specified by `ListName`.  
 Default: `Http + "://" + HostName + '/' + ListSite`;
 
 
 Optional:
 
-@param (String) `ListSite`
-This is the site the list is hosted on.  If not specified then the current SharePoint site will be used.
-This option only needs to be specified when the source list is on a different site/sub-site.
+* `ListSite` (String)  
+This is the site the list is hosted on.  If not specified then the current SharePoint site will be used.  This option only needs to be specified when the source list is on a different site/sub-site.  
 Optional.
 	
-@param (Function) `ListItemProcess`
-If a function is stored in this variable, then it will be applied to each list item before adding the item to the `ACList` Array.
+* `ListItemProcess` (Function)  
+If a function is stored in this variable, then it will be applied to each list item before adding the item to the `ACList` Array.  
 Optional
 
-@param (String) `AdditionalField`
-This is an optional second field in the `ListName` list that data is retrieved from. 
-This data will be placed in brackets after the `ACFieldName` value in the auto-complete list.
-ie. "Name (Additional Info)", where 'Name' is the value from `ACFieldName`, and 'Additional Info' is the value from `AdditionalField`.
-If this var is left blank, then no additional data will be retrieved.
+* `AdditionalField` (String)  
+This is an optional second field in the `ListName` list that data is retrieved from.  This data will be placed in brackets after the `ACFieldName` value in the auto-complete list.  ie. "Name (Additional Info)", where 'Name' is the value from `ACFieldName`, and 'Additional Info' is the value from `AdditionalField`.  If this var is left blank, then no additional data will be retrieved.  
 Optional
 	
-@param (String) `AdditionalFormField`
-This is the field that the additional info will be placed into after the auto-complete field loses focus.
+* `AdditionalFormField` (String)  
+This is the field that the additional info will be placed into after the auto-complete field loses focus.  
 Optional
