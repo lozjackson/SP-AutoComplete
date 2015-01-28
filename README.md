@@ -80,7 +80,7 @@ Default: window.location.hostname
 
 * `WebURL` (String)  
 This is the site that hosts the list specified by `ListName`.  
-Default: `Http + "://" + HostName + '/' + ListSite`;
+Default: `Http + "://" + HostName + '/' + ListSite;`
 
 
 Optional:
