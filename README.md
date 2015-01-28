@@ -40,7 +40,7 @@ If you set `AdditionalFormField` to another input element in your form, then it'
 			ListName: "Source List Name",													// Required
 			FieldName: "Source Field Name",													// Required (Default: "Name")
 			ACFormField: "The name of the auto-complete input element on your form",		// Required (Default: "Name")
-			ListSite: "Source List Site Name", 												// Optional
+			
 			AdditionalField: "Additional Source Field Name",								// Optional
 			AdditionalFormField: "The form field to hold the additional info",				// Optional
 		});
