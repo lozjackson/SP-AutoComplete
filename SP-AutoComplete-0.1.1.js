@@ -254,9 +254,7 @@
 				
 			@param (bool) disable
 				This is a boolean value - when true the save button will be disabled.
-				This value will be overridden and set to true if:
-					- the 'Contact Parents' check box is not checked
-					- the name field is empty
+				This value will be overridden and set to true if the name field is empty
 		*/
 		function disableSave(disable) 
 		{
