@@ -277,7 +277,7 @@
 				
 				/* 	
 					needs to either provide a way to override checkField
-				 	or, to not call checkField when the item is selected form the list as opposed to just typed in
+				 	or, to not call checkField when the item is selected from the list as opposed to just typed in
 				*/
 				
 				that.checkField($(e.target).val());
