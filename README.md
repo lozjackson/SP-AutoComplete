@@ -9,7 +9,7 @@ There is also an option to get an additional field from the source list and use 
 on the SharePoint form.
 
 
-# Dependencies: 
+# Dependencies  
 
 * jQuery
 * jQuery-UI
