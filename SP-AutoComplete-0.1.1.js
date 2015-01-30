@@ -274,6 +274,12 @@
 		{
 			// check the name and call getData on blur of name field
 			that.ACFormField.blur(function (e) {
+				
+				/* 	
+					needs to either provide a way to override checkField
+				 	or, to not call checkField when the item is selected form the list as opposed to just typed in
+				*/
+				
 				that.checkField($(e.target).val());
 				//for (var i = 0; i < that.CheckFields.length; i++) that.CheckFields[i].checkField();
 			});
