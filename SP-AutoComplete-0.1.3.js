@@ -1,8 +1,8 @@
 /********************************************************************************************************************
-* SP-AutoComplete v0.1.2
+* SP-AutoComplete v0.1.3
 *
 * Modified by: Loz Jackson
-* Last Modified: 2015-02-02 11:36
+* Last Modified: 2015-02-02 14:26
 *
 * Dependencies: 
 * jquery-2.1.1.min.js (may work with other versions of jquery, but not tested)
@@ -13,11 +13,10 @@
 ********************************************************************************************************************/
 
 /*
-	Instructions for creating an autocomplete field
+	Instructions for creating an auto-complete input field
 	
-	1. Include this file.
-	2. Use the following piece of script to add an autocomplete field.  
-		This should be called once the page has finished loading.. ie. place it in jquery's document ready function.
+	Use the following piece of script to add an auto-complete input field.  
+	This should be called once the page has finished loading.. ie. place it in jquery's document ready function.
 	
 	<script>
 		$(document).ready(function () {
@@ -308,7 +307,6 @@
 			
 			params = {
 				operation: "GetListItems",
-				webURL: that.WebURL,
 				listName: that.ListName,
 				CAMLViewFields: viewFields,
 				async: false,
