@@ -1,8 +1,8 @@
 /********************************************************************************************************************
-* SP-AutoComplete v0.1.1
+* SP-AutoComplete v0.1.2
 *
 * Modified by: Loz Jackson
-* Last Modified: 2015-01-26 15:27
+* Last Modified: 2015-02-02 10:40
 *
 * Dependencies: 
 * jquery-2.1.1.min.js (may work with other versions of jquery, but not tested)
@@ -204,7 +204,7 @@
 		function checkACList(name) 
 		{
 			$(that.ACList).each(function(key, value) {
-				if (value.toLowerCase().search(name.toLowerCase()) !== -1) 
+				if (value.toLowerCase().search(name.toLowerCase()) === 0) 
 				{
 					ACFieldValid(true);
 					that.ACFormField.val(value);
@@ -274,12 +274,6 @@
 		{
 			// check the name and call getData on blur of name field
 			that.ACFormField.blur(function (e) {
-				
-				/* 	
-					needs to either provide a way to override checkField
-				 	or, to not call checkField when the item is selected from the list as opposed to just typed in
-				*/
-				
 				that.checkField($(e.target).val());
 				//for (var i = 0; i < that.CheckFields.length; i++) that.CheckFields[i].checkField();
 			});
