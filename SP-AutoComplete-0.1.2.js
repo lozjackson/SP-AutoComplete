@@ -1,8 +1,8 @@
 /********************************************************************************************************************
-* SP-AutoComplete v0.1.1
+* SP-AutoComplete v0.1.2
 *
 * Modified by: Loz Jackson
-* Last Modified: 2015-01-26 15:27
+* Last Modified: 2015-02-02 11:36
 *
 * Dependencies: 
 * jquery-2.1.1.min.js (may work with other versions of jquery, but not tested)
@@ -204,7 +204,7 @@
 		function checkACList(name) 
 		{
 			$(that.ACList).each(function(key, value) {
-				if (value.toLowerCase().search(name.toLowerCase()) !== -1) 
+				if (name === value || value.toLowerCase().search(name.toLowerCase()) !== -1) 
 				{
 					ACFieldValid(true);
 					that.ACFormField.val(value);
@@ -337,10 +337,7 @@
 			// create the auto-complete text field
 			that.ACFormField.autocomplete({
 				source: that.ACList,
-				minLength: that.MinLength,
-				change: function () {
-					if (that.AdditionalField && that.AdditionalFormField)  that.getAdditionalField($(this));
-				}
+				minLength: that.MinLength
 			});
 			
 			disableSave(true); // disable the save button
