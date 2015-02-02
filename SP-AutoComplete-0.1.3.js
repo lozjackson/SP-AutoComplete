@@ -1,8 +1,8 @@
 /********************************************************************************************************************
-* SP-AutoComplete v0.1.2
+* SP-AutoComplete v0.1.3
 *
 * Modified by: Loz Jackson
-* Last Modified: 2015-02-02 14:22
+* Last Modified: 2015-02-02 14:26
 *
 * Dependencies: 
 * jquery-2.1.1.min.js (may work with other versions of jquery, but not tested)
