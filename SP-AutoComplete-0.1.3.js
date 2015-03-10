@@ -33,7 +33,7 @@
 
 */
 
-(function (d,w) {
+(function (d,w,undefined) {
 
 	w.AutoComplete = function () 
 	{
@@ -203,7 +203,7 @@
 		function checkACList(name) 
 		{
 			$(that.ACList).each(function(key, value) {
-				if (name === value || value.toLowerCase().search(name.toLowerCase()) !== -1) 
+				if (value !== undefined && (name === value || value.toLowerCase().search(name.toLowerCase()) !== -1)) 
 				{
 					ACFieldValid(true);
 					that.ACFormField.val(value);
