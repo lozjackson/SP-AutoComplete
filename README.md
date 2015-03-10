@@ -1,6 +1,6 @@
 # SP-AutoComplete 
 
-v0.1.3
+v0.1.4
 
 This auto-complete tool is for use with SharePoint 2010 forms.  It uses jquery.SPServices to get list items from SharePoint
 and then uses the jquery-UI AutoComplete widget to create an auto complete input field using the SharePoint list as source.
