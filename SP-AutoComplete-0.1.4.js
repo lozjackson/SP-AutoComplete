@@ -330,7 +330,8 @@
 			if (that.WebURL) params.webURL = that.WebURL;
 			
 			// Make SPServices.GetListItems function call
-			$().SPServices(params);
+			if ($().SPServices) $().SPServices(params);
+			else alert("SP-AutoComplete - Missing Dependency: SPServices");
 			
 			// create the auto-complete text field
 			that.ACFormField.autocomplete({
