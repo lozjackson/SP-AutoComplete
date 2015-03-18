@@ -1,8 +1,8 @@
 /********************************************************************************************************************
-* SP-AutoComplete v0.1.4
+* SP-AutoComplete v0.1.5
 *
 * Modified by: Loz Jackson
-* Last Modified: 2015-03-10 11:50
+* Last Modified: 2015-03-18 09:44
 *
 * Dependencies: 
 * jquery-2.1.1.min.js (may work with other versions of jquery, but not tested)
@@ -330,7 +330,8 @@
 			if (that.WebURL) params.webURL = that.WebURL;
 			
 			// Make SPServices.GetListItems function call
-			$().SPServices(params);
+			if ($().SPServices) $().SPServices(params);
+			else alert("SP-AutoComplete - Missing Dependency: SPServices");
 			
 			// create the auto-complete text field
 			that.ACFormField.autocomplete({
